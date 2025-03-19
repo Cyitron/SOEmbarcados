@@ -2,8 +2,8 @@
 
 //definições do projeto
 #define FCY 10000000UL
-#define OSCIOFNC_ON          0xFFDF
-#define POSCMOD_NONE         0xFFFF
+//#define OSCIOFNC_ON          0xFFDF
+//#define POSCMOD_NONE         0xFFFF
 
 #include <xc.h>
 #include <libpic30.h>
@@ -38,6 +38,7 @@ void config_ports(){
     
     TRISCbits.TRISC14 = 0; // saída de dados
     TRISCbits.TRISC15 = 0; // saída de dados
+    TRISEbits.TRISE0 = 0;
     //OSCIOFCN = 0b111111111111111110111111;
     
 }
@@ -51,7 +52,8 @@ void task_1(){
 
 void task_2(){
     
-    LATCbits.LATC15 = ~PORTCbits.RC15;
+    // LATCbits.LATC15 = ~PORTCbits.RC15;
+    LATEbits.LATE0 = ~PORTEbits.RE0;
     __delay_ms(50);
     
 }
